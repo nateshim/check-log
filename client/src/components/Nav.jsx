@@ -1,10 +1,12 @@
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import {logout} from "../services";
 
 const Nav = (props) => {
+  const history = useHistory();
   const handleClick = async() => {
     await logout();
     props.setUser(null);
+    history.push("/");
   }
   return (
     <nav>

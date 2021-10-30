@@ -18,7 +18,7 @@ const Register = (props) => {
     };
     const user = await register(newUser);
     props.setUser(user);
-    history.push("/");
+    history.push(`/${username}/tables`);
   }
 
   return (

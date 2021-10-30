@@ -3,6 +3,8 @@ import {Switch, Route} from "react-router-dom";
 import Nav from './components/Nav';
 import Home from './screens/Home';
 import Tables from './screens/Tables';
+import Login from './screens/Login';
+import Register from './screens/Register';
 import './App.css';
 
 function App() {
