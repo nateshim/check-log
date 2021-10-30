@@ -10,14 +10,14 @@ function App() {
 
   return (
     <div className="App">
-      <Nav/>
+      <Nav user={user} setUser={setUser}/>
       <Switch>
         <main>
           <Route exact path="/">
             <Home/>
           </Route>
           <Route path="/login">
-            <Login/>
+            <Login setUser={setUser}/>
           </Route>
           <Route path="/register">
             <Register setUser={setUser}/>

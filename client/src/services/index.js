@@ -21,3 +21,20 @@ export const register = async (newUser) => {
     console.error(e.message);
   }
 }
+
+export const login = async (userInfo) => {
+  try {
+    const res = await axios.post(`${apiURL}/auth/login`, userInfo);
+    return res.data;
+  } catch (e) {
+    console.error(e.message);
+  }
+}
+
+export const logout = async() => {
+  try {
+    await axios.get(`${apiURL}/auth/logout`);
+  } catch (e) {
+    console.error(e.message);
+  }
+}
