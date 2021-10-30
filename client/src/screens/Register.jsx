@@ -1,10 +1,13 @@
 import {useState} from "react";
+import {useHistory} from "react-router-dom";
 import {register} from "../services";
 
 const Register = (props) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,6 +18,7 @@ const Register = (props) => {
     };
     const user = await register(newUser);
     props.setUser(user);
+    history.push("/");
   }
 
   return (
