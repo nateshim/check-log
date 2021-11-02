@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from '@mui/styles';
-import { Button, Container, FormControl, InputLabel, Input, FormHelperText } from "@mui/material";
+import { Button, Container } from "@mui/material";
 import FormInput from "../components/FormInput";
 import { register } from "../services";
 
@@ -35,24 +35,24 @@ const Register = (props) => {
   return (
     <section>
       <h3>Register</h3>
-      <Container maxWidth="sm">
+      <Container maxWidth="xs">
         <form className={classes.registerForm} onSubmit={handleSubmit}>
           <FormInput
             for="username"
             setter={setUsername}
-            formType="text"
+            inputType="text"
             formValue={username}
           />
           <FormInput
             for="email"
             setter={setEmail}
-            formType="text"
+            inputType="text"
             formValue={email}
           />
           <FormInput
             for="password"
             setter={setPassword}
-            formType="password"
+            inputType="password"
             formValue={password}
           />
           <Button type="submit">Register</Button>

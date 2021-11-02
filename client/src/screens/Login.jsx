@@ -1,8 +1,19 @@
 import { useState } from "react";
-import { login } from "../services";
 import {useHistory} from "react-router-dom";
+import { makeStyles } from '@mui/styles';
+import { Button, Container } from "@mui/material"; 
+import FormInput from "../components/FormInput";
+import { login } from "../services";
+
+const useStyles = makeStyles({
+  loginForm: {
+    display: "flex",
+    flexDirection: "column",
+  }
+});
 
 const Login = (props) => {
+  const classes = useStyles();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
@@ -21,25 +32,23 @@ const Login = (props) => {
   return (
     <section>
       <h3>Login</h3>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username:</label>
-        <input
-          id="username"
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
+      <Container maxWidth="xs">
+      <form className={classes.loginForm} onSubmit={handleSubmit}>
+        <FormInput
+          for="username"
+          setter={setUsername}
+          inputType="text"
+          formValue={username}
         />
-        <label htmlFor="password">Password:</label>
-        <input
-          id="password"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
+        <FormInput
+          for="password"
+          setter={setPassword}
+          inputType="password"
+          formValue={password}
         />
-        <button type="submit">Sign up!</button>
+        <Button type="submit">Login</Button>
       </form>
+      </Container>
     </section>
   );
 };
