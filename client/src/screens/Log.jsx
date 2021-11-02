@@ -1,7 +1,7 @@
 const Log = (props) => {
   return (
     <div>
-      {props.user}
+      This is a log page
     </div>
   );
 };

@@ -17,6 +17,7 @@ const Tables = (props) => {
   const classes = useStyles();
   const history = useHistory();
   const {username} = useParams(); 
+  const [toggleFetch, setToggleFetch] = useState(false);
   const [open, setOpen] = useState(false);
   const [tables, setTables] = useState([]);
   const [name, setName] = useState('');
@@ -29,6 +30,8 @@ const Tables = (props) => {
       user: props.user
     }
     await createTable(tableInfo);
+    handleClose();
+    setToggleFetch((curr) => !curr);
   }
 
   useEffect(() => {
@@ -40,13 +43,12 @@ const Tables = (props) => {
       setTables(currTables);
     } 
     retrieveTables();
-  }, [])
+  }, [toggleFetch]);
 
   return (
     <Container>
       <Modal
         open={open}
-        onClose={handleClose}
       >
         <form className={classes.createTableForm}>
           <FormInput
