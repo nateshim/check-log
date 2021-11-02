@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import {useHistory, useParams} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
 import { Grid, Button, Container, Modal } from '@mui/material'; 
@@ -14,6 +15,8 @@ const useStyles = makeStyles({
 
 const Tables = (props) => {
   const classes = useStyles();
+  const history = useHistory();
+  const {username} = useParams(); 
   const [open, setOpen] = useState(false);
   const [tables, setTables] = useState([]);
   const [name, setName] = useState('');
@@ -29,6 +32,9 @@ const Tables = (props) => {
   }
 
   useEffect(() => {
+    if (!props.user || props.user.username !== username) {
+      history.push("/");
+    }
     const retrieveTables = async() => {
       const currTables = await getTables();
       setTables(currTables);
