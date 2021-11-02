@@ -1,8 +1,19 @@
-import {useState} from "react";
-import {useHistory} from "react-router-dom";
-import {register} from "../services";
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { makeStyles } from '@mui/styles';
+import { Button, Container, FormControl, InputLabel, Input, FormHelperText } from "@mui/material";
+import FormInput from "../components/FormInput";
+import { register } from "../services";
+
+const useStyles = makeStyles({
+  registerForm: {
+    display: "flex",
+    flexDirection: "column",
+  }
+});
 
 const Register = (props) => {
+  const classes = useStyles();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,33 +35,29 @@ const Register = (props) => {
   return (
     <section>
       <h3>Register</h3>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username:</label>
-        <input 
-          id="username" 
-          type="text" 
-          value={username} 
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-        <label htmlFor="email">Email:</label>
-        <input 
-          id="email" 
-          type="text" 
-          value={email} 
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <label htmlFor="password">Password:</label>
-        <input 
-          id="password" 
-          type="text" 
-          value={password} 
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button type="submit">Register</button>
-      </form>
+      <Container maxWidth="sm">
+        <form className={classes.registerForm} onSubmit={handleSubmit}>
+          <FormInput
+            for="username"
+            setter={setUsername}
+            formType="text"
+            formValue={username}
+          />
+          <FormInput
+            for="email"
+            setter={setEmail}
+            formType="text"
+            formValue={email}
+          />
+          <FormInput
+            for="password"
+            setter={setPassword}
+            formType="password"
+            formValue={password}
+          />
+          <Button type="submit">Register</Button>
+        </form>
+      </Container>
     </section>
   );
 };

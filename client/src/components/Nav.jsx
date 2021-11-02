@@ -1,7 +1,27 @@
-import {Link, useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
+import { makeStyles } from '@mui/styles';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Toolbar from '@mui/material/Toolbar';
+import ButtonLink from './ButtonLink';
 import {logout} from "../services";
 
+const useStyles = makeStyles({
+  buttonLink: {
+    textDecoration: 'inherit',
+    color: 'inherit',
+  },
+  left: {
+    color: 'white',
+  },
+  right: {
+    color: 'white',
+  },
+});
+
 const Nav = (props) => {
+  const classes = useStyles();
   const history = useHistory();
   const handleClick = async() => {
     await logout();
@@ -9,19 +29,38 @@ const Nav = (props) => {
     history.push("/");
   }
   return (
-    <nav>
-      {props.user ? (
-        <>
-          <button onClick={handleClick}>Log out!</button>
-        </>
-      ): (
-        <>
-          <Link to="/">Home</Link>
-          <Link to="/register">Register</Link>
-          <Link to="/login">Login</Link>
-        </>
-      )}
-    </nav>
+    <AppBar
+      position="static"
+    >
+      <Toolbar>
+        <ButtonLink 
+          classes={classes}
+          position="left"
+          path="/"
+          name="CheckLog"
+        />
+        {props.user ? (
+          <>
+            <Button className={classes.right} onClick={handleClick}>Log out!</Button>
+          </>
+        ): (
+          <Box display="flex" flexGrow={1} justifyContent="flex-end">
+            <ButtonLink 
+              classes={classes}
+              position="right"
+              path="/register"
+              name="Register"
+            />
+            <ButtonLink 
+              classes={classes}
+              position="right"
+              path="/login" 
+              name="Login"
+            />
+          </Box>
+        )}
+      </Toolbar>
+    </AppBar>
   );
 };
 
