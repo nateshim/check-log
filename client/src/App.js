@@ -3,6 +3,7 @@ import {Switch, Route} from "react-router-dom";
 import Nav from './components/Nav';
 import Home from './screens/Home';
 import Tables from './screens/Tables';
+import Log from './screens/Log';
 import Login from './screens/Login';
 import Register from './screens/Register';
 import './App.css';
@@ -26,6 +27,9 @@ function App() {
           </Route>
           <Route path="/:username/tables">
             <Tables user={user}/>
+          </Route>
+          <Route path="/:username/:table_name/log">
+            <Log user={user}/>
           </Route>
         </main>
       </Switch>

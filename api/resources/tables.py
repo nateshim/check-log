@@ -19,8 +19,9 @@ def get_users_tables():
 
 @table.route('/', methods=["POST"])
 @login_required
-def add_table(user_id):
+def add_table():
     body = request.get_json()
-    table = Table.create(**body, user=current_user.user_id)
+    print(body)
+    table = Table.create(name=body['name'], user=current_user.id)
     table_dict = model_to_dict(table)
     return jsonify(table_dict), 201

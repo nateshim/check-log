@@ -1,9 +1,6 @@
 import {useHistory} from "react-router-dom";
 import { makeStyles } from '@mui/styles';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Toolbar from '@mui/material/Toolbar';
+import {AppBar, Avatar, Box, Button, Toolbar} from '@mui/material';
 import ButtonLink from './ButtonLink';
 import {logout} from "../services";
 
@@ -40,9 +37,9 @@ const Nav = (props) => {
           name="CheckLog"
         />
         {props.user ? (
-          <>
-            <Button className={classes.right} onClick={handleClick}>Log out!</Button>
-          </>
+          <Box display="flex" flexGrow={1} justifyContent="flex-end">
+            <Avatar src="/broken-image.jpg" onClick={handleClick}/>
+          </Box>
         ): (
           <Box display="flex" flexGrow={1} justifyContent="flex-end">
             <ButtonLink 
