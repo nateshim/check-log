@@ -64,7 +64,7 @@ const Tables = (props) => {
         {tables.map((table) => (
           <Grid item xs={4}>
             <Button>
-              <Link to={`${table.name}/log`}>
+              <Link to={`${table.id}/log`}>
                 {table.name}
               </Link>
             </Button>

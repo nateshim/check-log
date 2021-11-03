@@ -29,7 +29,7 @@ function App() {
           <Route path="/:username/tables">
             <Tables user={user}/>
           </Route>
-          <Route path="/:username/:table_name/log">
+          <Route path="/:username/:table_id/log">
             <Log user={user}/>
           </Route>
         </main>

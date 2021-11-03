@@ -56,3 +56,12 @@ export const createTable = async(tableInfo) => {
     console.error(e.message);
   }
 }
+
+export const getLogs = async(tableID) => {
+  try {
+    const res = await axios.get(`${apiURL}/logs/${tableID}`);
+    return res.data;
+  } catch (e) {
+    console.error(e.message);
+  }
+}
