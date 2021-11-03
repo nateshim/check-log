@@ -5,7 +5,7 @@ const EditLogMenu = (props) => {
     <Box display="flex" flexDirection="column" alignItems="flex-start">
       <Button onClick={props.toggleModal}>Add Column</Button>
       <Button>Edit Column</Button>
-      <Button>Delete Column</Button>
+      <Button onClick={() => {props.toggleDeleteButtons(); props.setOpenDrawer(false);}}>Delete Column</Button>
     </Box>
   );
 };

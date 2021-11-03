@@ -42,18 +42,21 @@ const Register = (props) => {
             setter={setUsername}
             inputType="text"
             formValue={username}
+            required={true}
           />
           <FormInput
             for="email"
             setter={setEmail}
-            inputType="text"
+            inputType="email"
             formValue={email}
+            required={true}
           />
           <FormInput
             for="password"
             setter={setPassword}
             inputType="password"
             formValue={password}
+            required={true}
           />
           <Button type="submit">Register</Button>
         </form>

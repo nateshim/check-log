@@ -5,7 +5,7 @@ import {Container, Box, Button, Grid, SwipeableDrawer, Modal} from '@mui/materia
 import EditLogMenu from '../components/EditLogMenu';
 import FormInput from '../components/FormInput';
 import LogRow from '../components/LogRow';
-import {getLogs, addLog} from '../services';
+import {getLogs, addLog, editLog, deleteLog} from '../services';
 
 const useStyles = makeStyles({
   addColumnForm: {
@@ -22,6 +22,7 @@ const Log = (props) => {
   const [toggleFetch, setToggleFetch] = useState(false);
   const [openDrawer, setOpenDrawer] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const [showDeleteButtons, setShowDeleteButtons] = useState(false);
 
   const [logs, setLogs] = useState([]);
 
@@ -41,6 +42,10 @@ const Log = (props) => {
     setOpenModal(!openModal);
   }
 
+  const toggleDeleteButtons = () => {
+    setShowDeleteButtons(!showDeleteButtons);
+  }
+
   const handleAddColumn = async () => {
     const newLog = {
       date,
@@ -53,6 +58,26 @@ const Log = (props) => {
     const res = await addLog(newLog, table_id);
     setLogs([...logs, res]);
     toggleModal();
+    setToggleFetch((curr) => !curr);
+  }
+
+  const handleEditColumn = async (id) => {
+    const newLog = {
+      date,
+      location,
+      party,
+      subject,
+      details,
+      table_id
+    }
+    await editLog(newLog, id);
+    toggleModal();
+    setToggleFetch((curr) => !curr);
+  }
+
+  const handleDeleteColumn = async (id) => {
+    await deleteLog(id);
+    toggleDeleteButtons();
     setToggleFetch((curr) => !curr);
   }
 
@@ -76,30 +101,35 @@ const Log = (props) => {
             setter={setDate}
             inputType="text"
             formValue={date}
+            required={true}
           />
           <FormInput
             for="location"
             setter={setLocation}
             inputType="text"
             formValue={location}
+            required={true}
           />
           <FormInput
             for="party"
             setter={setParty}
             inputType="text"
             formValue={party}
+            required={true}
           />
           <FormInput
             for="subject"
             setter={setSubject}
             inputType="text"
             formValue={subject}
+            required={true}
           />
           <FormInput
             for="details"
             setter={setDetails}
             inputType="text"
             formValue={details}
+            required={false}
           />
           <Button onClick={handleAddColumn}>Create Table</Button>
         </form>
@@ -111,13 +141,15 @@ const Log = (props) => {
         onOpen={toggleDrawer(true)}
       >
         <EditLogMenu
+          setOpenDrawer={setOpenDrawer}
           toggleModal={toggleModal}
+          toggleDeleteButtons={toggleDeleteButtons}
         />
       </SwipeableDrawer>
       <Box display="flex" justifyContent="flex-start">
         <Button onClick={toggleDrawer(true)}>Edit</Button>
       </Box>
-      <Grid container spacing={2}>
+      <Grid container spacing={3}>
         <LogRow 
             key={0}
             date="Date"
@@ -127,6 +159,10 @@ const Log = (props) => {
             details="Details"
           />
         {logs?.map((log) => (
+          <Container>
+          {showDeleteButtons && <Button className={classes.circleButton} variant="outlined" color="error" onClick={() => handleDeleteColumn(log.id)}>
+            -
+          </Button>}
           <LogRow 
             key={log.id}
             date={log.date}
@@ -135,6 +171,7 @@ const Log = (props) => {
             subject={log.subject}
             details={log.details}
           />
+          </Container>
         ))}
       </Grid>
     </Container>

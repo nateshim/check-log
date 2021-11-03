@@ -39,12 +39,14 @@ const Login = (props) => {
           setter={setUsername}
           inputType="text"
           formValue={username}
+          required={true}
         />
         <FormInput
           for="password"
           setter={setPassword}
           inputType="password"
           formValue={password}
+          required={true}
         />
         <Button type="submit">Login</Button>
       </form>

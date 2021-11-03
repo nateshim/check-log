@@ -54,6 +54,7 @@ const Tables = (props) => {
             setter={setName}
             inputType="text"
             formValue={name}
+            required={true}
           />
           <Button onClick={handleCreateTable}>Create Table</Button>
         </form>

@@ -25,3 +25,16 @@ def add_log(table_id):
     log = Log.create(**body, table=Table.get_by_id(table_id).id)
     log_dict = model_to_dict(log)
     return jsonify(log_dict), 201
+
+@log.route('/<int:id>', methods=["PUT"])
+@login_required
+def update_log(id):
+    body = request.get_json()
+    Log.update(**body).where(Log.id == id).execute()
+    return jsonify(model_to_dict(Log.get_by_id(id))), 200
+
+@log.route('/<int:id>', methods=["DELETE"])
+@login_required
+def delete_log(id):
+    Log.delete().where(Log.id == id).execute()
+    return jsonify(message="Log successfully deleted!"), 200

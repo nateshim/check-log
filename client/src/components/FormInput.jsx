@@ -9,7 +9,7 @@ const FormInput = (props) => {
         type={props.inputType}
         value={props.formValue}
         onChange={(e) => props.setter(e.target.value)}
-        required
+        required={props.required}
       />
       <FormHelperText id={`${props.for}-helper-text`}>Please select 8-12 characters.</FormHelperText>
     </FormControl>

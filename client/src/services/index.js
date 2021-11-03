@@ -74,3 +74,19 @@ export const addLog = async(newLog, tableID) => {
     console.error(e.message);
   }
 }
+
+export const editLog = async(newLog, id) => {
+  try {
+    await axios.put(`${apiURL}/logs/${id}`, newLog);
+  } catch (e) {
+    console.error(e.message);
+  }
+}
+
+export const deleteLog = async(id) => {
+  try {
+    await axios.delete(`${apiURL}/logs/${id}`);
+  } catch (e) {
+    console.error(e.message);
+  }
+}
