@@ -1,9 +1,10 @@
 import {useEffect, useState} from 'react';
 import {useHistory, useParams} from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
-import {Container, Box, Button, SwipeableDrawer, Modal, Typography} from '@mui/material';
+import {Container, Box, Button, Grid, SwipeableDrawer, Modal} from '@mui/material';
 import EditLogMenu from '../components/EditLogMenu';
 import FormInput from '../components/FormInput';
+import LogRow from '../components/LogRow';
 import {getLogs, addLog} from '../services';
 
 const useStyles = makeStyles({
@@ -50,19 +51,18 @@ const Log = (props) => {
       table_id
     }
     const res = await addLog(newLog, table_id);
-    console.log(res);
     setLogs([...logs, res]);
+    toggleModal();
+    setToggleFetch((curr) => !curr);
   }
 
   useEffect(() => {
     if (!props.user || props.user.username !== username) {
       history.push('/');
     }
-    const retrieveLogs = async () => {
-      const currLogs = await getLogs(table_id);
+    getLogs(table_id).then((currLogs) => {
       setLogs(currLogs);
-    }
-    retrieveLogs();
+    })
   }, [toggleFetch]);
 
   return (
@@ -104,7 +104,6 @@ const Log = (props) => {
           <Button onClick={handleAddColumn}>Create Table</Button>
         </form>
       </Modal>
-      <Button onClick={toggleDrawer(true)}>Edit</Button>
       <SwipeableDrawer
         anchor="left"
         open={openDrawer}
@@ -115,11 +114,29 @@ const Log = (props) => {
           toggleModal={toggleModal}
         />
       </SwipeableDrawer>
-      <Box>
-        {logs?.map((log) => (
-          <Typography>{log.party}</Typography>
-        ))}
+      <Box display="flex" justifyContent="flex-start">
+        <Button onClick={toggleDrawer(true)}>Edit</Button>
       </Box>
+      <Grid container spacing={2}>
+        <LogRow 
+            key={0}
+            date="Date"
+            location="Location"
+            party="Party"
+            subject="Subject"
+            details="Details"
+          />
+        {logs?.map((log) => (
+          <LogRow 
+            key={log.id}
+            date={log.date}
+            location={log.location}
+            party={log.party}
+            subject={log.subject}
+            details={log.details}
+          />
+        ))}
+      </Grid>
     </Container>
   );
 };

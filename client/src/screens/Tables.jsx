@@ -38,11 +38,9 @@ const Tables = (props) => {
     if (!props.user || props.user.username !== username) {
       history.push("/");
     }
-    const retrieveTables = async() => {
-      const currTables = await getTables();
-      setTables(currTables);
-    } 
-    retrieveTables();
+    getTables().then((currTables) => {
+      setTables(currTables)
+    })
   }, [toggleFetch]);
 
   return (
@@ -62,7 +60,7 @@ const Tables = (props) => {
       </Modal>
       <Grid container spacing={2}>
         {tables.map((table) => (
-          <Grid item xs={4}>
+          <Grid item xs={4} key={table.id}>
             <Button>
               <Link to={`${table.id}/log`}>
                 {table.name}

@@ -1,6 +1,6 @@
 import {useHistory} from "react-router-dom";
 import { makeStyles } from '@mui/styles';
-import {AppBar, Avatar, Box, Button, Toolbar} from '@mui/material';
+import {AppBar, Avatar, Box, Toolbar} from '@mui/material';
 import ButtonLink from './ButtonLink';
 import {logout} from "../services";
 
