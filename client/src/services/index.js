@@ -65,3 +65,12 @@ export const getLogs = async(tableID) => {
     console.error(e.message);
   }
 }
+
+export const addLog = async(newLog, tableID) => {
+  try {
+    const res = await axios.post(`${apiURL}/logs/${tableID}`, newLog);
+    return res.data;
+  } catch (e) {
+    console.error(e.message);
+  }
+}
