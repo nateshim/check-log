@@ -1,10 +1,11 @@
 import {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
+import {useHistory, useParams} from 'react-router-dom';
 import {Container, Box, Button, SwipeableDrawer, Typography} from '@mui/material';
 import {getLogs} from '../services';
 
 const Log = (props) => {
-  const {table_id} = useParams();
+  const history = useHistory();
+  const {username, table_id} = useParams();
   const [toggleFetch, setToggleFetch] = useState(false);
   const [logs, setLogs] = useState([]);
   const [open, setOpen] = useState(false);
@@ -15,6 +16,9 @@ const Log = (props) => {
   }
 
   useEffect(() => {
+    if (!props.user || props.user.username !== username) {
+      history.push('/');
+    }
     const retrieveLogs = async () => {
       const currLogs = await getLogs(table_id);
       setLogs(currLogs);
