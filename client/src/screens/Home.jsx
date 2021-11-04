@@ -9,7 +9,7 @@ const Home = () => {
           alignItems="center" 
           justifyContent="center"
         >
-          <Typography>Organize your conversations wherever and whenener.</Typography>
+          <Typography color="textPrimary">Organize your conversations wherever and whenener.</Typography>
         </Box>
         <Box 
           display="flex" 

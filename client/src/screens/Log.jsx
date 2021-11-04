@@ -23,8 +23,11 @@ const Log = (props) => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [showDeleteButtons, setShowDeleteButtons] = useState(false);
+  const [showEditButtons, setShowEditButtons] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
 
   const [logs, setLogs] = useState([]);
+  const [logToEdit, setLogToEdit] = useState({});
 
   const [date, setDate] = useState('');
   const [location, setLocation] = useState('');
@@ -32,18 +35,33 @@ const Log = (props) => {
   const [subject, setSubject] = useState('');
   const [details, setDetails] = useState('');
 
+  const prepEditLog = (log) => {
+    setLogToEdit(log);
+    setDate(log?.date);
+    setLocation(log?.location);
+    setParty(log?.party);
+    setSubject(log?.subject);
+    setDetails(log?.details);
+    toggleModal(true);
+  }
+  
   const toggleDrawer = (curr) => (event) => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) return;
     setOpenDrawer(curr);
   }
 
-  const toggleModal = () => {
+  const toggleModal = (edit) => {
     setOpenDrawer(false);
     setOpenModal(!openModal);
+    setIsEdit(edit);
   }
 
   const toggleDeleteButtons = () => {
     setShowDeleteButtons(!showDeleteButtons);
+  }
+
+  const toggleEditButtons = () => {
+    setShowEditButtons(!showEditButtons);
   }
 
   const handleAddColumn = async () => {
@@ -57,11 +75,11 @@ const Log = (props) => {
     }
     const res = await addLog(newLog, table_id);
     setLogs([...logs, res]);
-    toggleModal();
+    toggleModal(false);
     setToggleFetch((curr) => !curr);
   }
 
-  const handleEditColumn = async (id) => {
+  const handleEditColumn = async () => {
     const newLog = {
       date,
       location,
@@ -70,8 +88,10 @@ const Log = (props) => {
       details,
       table_id
     }
-    await editLog(newLog, id);
-    toggleModal();
+    await editLog(newLog, logToEdit?.id);
+    toggleModal(false);
+    toggleEditButtons();
+    setLogToEdit({});
     setToggleFetch((curr) => !curr);
   }
 
@@ -131,7 +151,7 @@ const Log = (props) => {
             formValue={details}
             required={false}
           />
-          <Button onClick={handleAddColumn}>Create Table</Button>
+          {isEdit ? <Button onClick={handleEditColumn}>Edit Table</Button> : <Button onClick={handleAddColumn}>Create Table</Button>}
         </form>
       </Modal>
       <SwipeableDrawer
@@ -144,6 +164,7 @@ const Log = (props) => {
           setOpenDrawer={setOpenDrawer}
           toggleModal={toggleModal}
           toggleDeleteButtons={toggleDeleteButtons}
+          toggleEditButtons={toggleEditButtons}
         />
       </SwipeableDrawer>
       <Box display="flex" justifyContent="flex-start">
@@ -162,6 +183,9 @@ const Log = (props) => {
           <Container>
           {showDeleteButtons && <Button className={classes.circleButton} variant="outlined" color="error" onClick={() => handleDeleteColumn(log.id)}>
             -
+          </Button>}
+          {showEditButtons && <Button className={classes.circleButton} variant="outlined" onClick={() => {prepEditLog(log)}}>
+            Edit
           </Button>}
           <LogRow 
             key={log.id}

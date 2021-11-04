@@ -1,19 +1,14 @@
 import {useHistory} from "react-router-dom";
 import { makeStyles } from '@mui/styles';
-import {AppBar, Avatar, Box, Toolbar} from '@mui/material';
+import {AppBar, Avatar, Box, Toolbar, Typography} from '@mui/material';
 import ButtonLink from './ButtonLink';
 import {logout} from "../services";
 
 const useStyles = makeStyles({
   buttonLink: {
     textDecoration: 'inherit',
+    textTransform: "none",
     color: 'inherit',
-  },
-  left: {
-    color: 'white',
-  },
-  right: {
-    color: 'white',
   },
 });
 
