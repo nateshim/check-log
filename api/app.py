@@ -1,6 +1,7 @@
 from flask import Flask, g
 from flask_cors import CORS
 from flask_login import LoginManager
+import os
 
 from db import DATABASE, initialize
 from log import Log
@@ -17,7 +18,7 @@ login_manager = LoginManager()
 
 app = Flask(__name__)
 
-app.secret_key = 'doctorssayimtheillestcauseimsufferingfromrealness'
+app.secret_key = os.environ.get('SECRET') or 'doctorssayimtheillestcauseimsufferingfromrealness'
 
 login_manager.init_app(app)
 
@@ -46,7 +47,16 @@ app.register_blueprint(log)
 app.register_blueprint(table)
 app.register_blueprint(user)
 
-CORS(app, origins=['http://localhost:3000'], supports_credentials=True)
+origins=['http://localhost:3000']
+
+if 'DATABASE_URL' in os.environ:
+    initialize([Log, Table, User])
+    app.config['SESSION_COOKIE_SECURE'] = True
+    app.config['SESSION_COOKIE_HTTPONLY'] = False
+    app.config['SESSION_COOKIE_SAMESITE'] = 'None'
+    origins.append(os.environ.get('CLIENT_URL'))
+
+CORS(app, origins=origins, supports_credentials=True)
 
 if __name__ == '__main__':
     initialize([Log, Table, User])
