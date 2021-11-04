@@ -30,7 +30,7 @@ const Nav = (props) => {
   const handleLogout = async() => {
     await logout();
     props.setUser(null);
-    history.push("/");
+    history.push('/');
   }
   const handleTablesDirect = () => {
     if (!props.user) {
