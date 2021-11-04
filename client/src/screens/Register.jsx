@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from '@mui/styles';
-import { Button, Container } from "@mui/material";
+import { Box, Button, Container, Typography } from "@mui/material";
 import FormInput from "../components/FormInput";
 import { register } from "../services";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   registerForm: {
     display: "flex",
     flexDirection: "column",
-  }
-});
+  },
+}));
 
 const Register = (props) => {
   const classes = useStyles();
@@ -33,8 +33,14 @@ const Register = (props) => {
   }
 
   return (
-    <section>
-      <h3>Register</h3>
+    <Box display="flex" flexDirection="column" alignItems="center">
+      <Typography
+        color="textPrimary"
+        style={{
+          fontWeight: 'bold',
+          fontSize: '20px'
+        }}
+      >Register</Typography>
       <Container maxWidth="xs">
         <form className={classes.registerForm} onSubmit={handleSubmit}>
           <FormInput
@@ -58,10 +64,12 @@ const Register = (props) => {
             formValue={password}
             required={true}
           />
-          <Button type="submit">Register</Button>
+          <Button color="secondary" variant="contained" type="submit">
+            <Typography color="primary">Register</Typography>
+          </Button>
         </form>
       </Container>
-    </section>
+    </Box>
   );
 };
 
