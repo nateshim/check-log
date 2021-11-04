@@ -62,7 +62,7 @@ const Tables = (props) => {
       <Grid container spacing={2}>
         {tables.map((table) => (
           <Grid item xs={4} key={table.id}>
-            <Button>
+            <Button color="secondary" variant="outlined">
               <Link to={`${table.id}/log`}>
                 {table.name}
               </Link>
@@ -70,7 +70,7 @@ const Tables = (props) => {
           </Grid>
         ))}
         <Grid item xs={4}>
-          <Button onClick={handleOpen}>+</Button>
+          <Button color="secondary" variant="outlined" onClick={handleOpen}>+</Button>
         </Grid>
       </Grid>
     </Container>

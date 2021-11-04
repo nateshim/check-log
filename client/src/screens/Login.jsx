@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {useHistory} from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
 import { Box, Button, Container, Typography } from '@mui/material'; 
@@ -7,8 +7,8 @@ import { login } from '../services';
 
 const useStyles = makeStyles({
   loginForm: {
-    display: "flex",
-    flexDirection: "column",
+    display: 'flex',
+    flexDirection: 'column',
     padding: '15px',
     margin: '10px',
   }
@@ -19,6 +19,7 @@ const Login = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,9 +28,19 @@ const Login = (props) => {
       password,
     };
     const user = await login(userInfo);
-    props.setUser(user);
-    history.push(`/${username}/tables`);
+    if (!user) {
+      setShowErrorMessage(true);
+    } else {
+      props.setUser(user);
+      history.push(`/${username}/tables`);
+    }
   }
+
+  useEffect(() => {
+    if (props.user) {
+      history.push('/');
+    }
+  }, [])
 
   return (
     <Box display="flex" flexDirection="column" alignItems="center" height="500px" justifyContent="center">
@@ -56,6 +67,7 @@ const Login = (props) => {
           formValue={password}
           required={true}
         />
+        {showErrorMessage && <Typography color="error">Username or password incorrect.</Typography>}
         <Button style={{marginTop: '20px'}} color="secondary" variant="contained" type="submit">
           <Typography color="primary">Login</Typography>
         </Button>
