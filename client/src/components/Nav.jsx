@@ -43,7 +43,7 @@ const Nav = (props) => {
     <>
     <AppBar
       position="static"
-      style={{boxShadow: "none", height: '80px', display:'flex', justifyContent: 'center'}}
+      style={{boxShadow: 'none', height: '80px', display:'flex', justifyContent: 'center'}}
     >
       <Toolbar>
         <ButtonLink 
