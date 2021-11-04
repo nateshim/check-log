@@ -14,6 +14,8 @@ const useStyles = makeStyles({
   },
   logRowContainer: {
     flexGrow: 1,
+    display: 'flex',
+    flexDirection: 'column'
   }
 });
 
@@ -117,6 +119,10 @@ const Log = (props) => {
     <Container>
       <Modal
         open={openModal}
+        hideBackdrop={true}
+        style={{
+          background: 'white'
+        }}
       >
         <form className={classes.addColumnForm}>
           <FormInput
