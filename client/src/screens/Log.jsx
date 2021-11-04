@@ -151,7 +151,7 @@ const Log = (props) => {
             formValue={details}
             required={false}
           />
-          {isEdit ? <Button onClick={handleEditColumn}>Edit Table</Button> : <Button onClick={handleAddColumn}>Create Table</Button>}
+          {isEdit ? <Button color="secondary" onClick={handleEditColumn}>Edit Table</Button> : <Button color="secondary" onClick={handleAddColumn}>Create Table</Button>}
         </form>
       </Modal>
       <SwipeableDrawer
@@ -168,7 +168,7 @@ const Log = (props) => {
         />
       </SwipeableDrawer>
       <Box display="flex" justifyContent="flex-start">
-        <Button onClick={toggleDrawer(true)}>Edit</Button>
+        <Button color="secondary" onClick={toggleDrawer(true)}>Edit</Button>
       </Box>
       <Grid container spacing={3}>
         <LogRow 
@@ -184,7 +184,7 @@ const Log = (props) => {
           {showDeleteButtons && <Button className={classes.circleButton} variant="outlined" color="error" onClick={() => handleDeleteColumn(log.id)}>
             -
           </Button>}
-          {showEditButtons && <Button className={classes.circleButton} variant="outlined" onClick={() => {prepEditLog(log)}}>
+          {showEditButtons && <Button color="secondary" className={classes.circleButton} variant="outlined" onClick={() => {prepEditLog(log)}}>
             Edit
           </Button>}
           <LogRow 
