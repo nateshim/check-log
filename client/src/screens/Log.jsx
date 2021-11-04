@@ -170,9 +170,10 @@ const Log = (props) => {
       <Box display="flex" justifyContent="flex-start">
         <Button color="secondary" onClick={toggleDrawer(true)}>Edit</Button>
       </Box>
-      <Grid container spacing={3}>
+      <Grid container>
         <LogRow 
             key={0}
+            id={0}
             date="Date"
             location="Location"
             party="Party"
@@ -180,7 +181,7 @@ const Log = (props) => {
             details="Details"
           />
         {logs?.map((log) => (
-          <Container>
+          <>
           {showDeleteButtons && <Button className={classes.circleButton} variant="outlined" color="error" onClick={() => handleDeleteColumn(log.id)}>
             -
           </Button>}
@@ -189,13 +190,14 @@ const Log = (props) => {
           </Button>}
           <LogRow 
             key={log.id}
+            id={log.id}
             date={log.date}
             location={log.location}
             party={log.party}
             subject={log.subject}
             details={log.details}
           />
-          </Container>
+          </>
         ))}
       </Grid>
     </Container>
