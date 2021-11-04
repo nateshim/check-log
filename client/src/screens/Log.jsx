@@ -12,6 +12,9 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
   },
+  logRowContainer: {
+    flexGrow: 1,
+  }
 });
 
 const Log = (props) => {
@@ -181,7 +184,7 @@ const Log = (props) => {
             details="Details"
           />
         {logs?.map((log) => (
-          <>
+          <div className={classes.logRowContainer}>
           {showDeleteButtons && <Button className={classes.circleButton} variant="outlined" color="error" onClick={() => handleDeleteColumn(log.id)}>
             -
           </Button>}
@@ -197,7 +200,7 @@ const Log = (props) => {
             subject={log.subject}
             details={log.details}
           />
-          </>
+          </div>
         ))}
       </Grid>
     </Container>
