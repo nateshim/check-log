@@ -1,9 +1,9 @@
-import {useState} from "react";
-import {useHistory} from "react-router-dom";
+import {useState} from 'react';
+import {useHistory} from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
 import {AppBar, Avatar, Box, Button, Divider, Menu, MenuItem, Toolbar} from '@mui/material';
 import ButtonLink from './ButtonLink';
-import {logout} from "../services";
+import {logout} from '../services';
 
 const useStyles = makeStyles((theme) => ({
   buttonLink: {
