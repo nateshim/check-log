@@ -9,7 +9,9 @@ const useStyles = makeStyles((theme) => ({
   registerForm: {
     display: "flex",
     flexDirection: "column",
+    justifyContent: 'center',
     padding: '15px',
+    margin: '10px',
   },
 }));
 
@@ -34,7 +36,7 @@ const Register = (props) => {
   }
 
   return (
-    <Box display="flex" flexDirection="column" alignItems="center">
+    <Box display="flex" flexDirection="column" alignItems="center" height="500px" justifyContent="center">
       <Typography
         color="textPrimary"
         style={{
@@ -65,7 +67,7 @@ const Register = (props) => {
             formValue={password}
             required={true}
           />
-          <Button color="secondary" variant="contained" type="submit">
+          <Button style={{marginTop: '20px'}} color="secondary" variant="contained" type="submit">
             <Typography color="primary">Register</Typography>
           </Button>
         </form>

@@ -10,6 +10,7 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     padding: '15px',
+    margin: '10px',
   }
 });
 
@@ -31,7 +32,7 @@ const Login = (props) => {
   }
 
   return (
-    <Box display="flex" flexDirection="column" alignItems="center">
+    <Box display="flex" flexDirection="column" alignItems="center" height="500px" justifyContent="center">
       <Typography
         color="textPrimary"
         style={{
@@ -55,7 +56,7 @@ const Login = (props) => {
           formValue={password}
           required={true}
         />
-        <Button color="secondary" variant="contained" type="submit">
+        <Button style={{marginTop: '20px'}} color="secondary" variant="contained" type="submit">
           <Typography color="primary">Login</Typography>
         </Button>
       </form>
