@@ -9,6 +9,7 @@ const useStyles = makeStyles({
   loginForm: {
     display: "flex",
     flexDirection: "column",
+    padding: '15px',
   }
 });
 
@@ -30,8 +31,14 @@ const Login = (props) => {
   }
 
   return (
-    <section>
-      <h3>Login</h3>
+    <Box display="flex" flexDirection="column" alignItems="center">
+      <Typography
+        color="textPrimary"
+        style={{
+          fontWeight: 'bold',
+          fontSize: '20px'
+        }}
+      >Login</Typography>
       <Container maxWidth="xs">
       <form className={classes.loginForm} onSubmit={handleSubmit}>
         <FormInput
@@ -48,10 +55,12 @@ const Login = (props) => {
           formValue={password}
           required={true}
         />
-        <Button type="submit">Login</Button>
+        <Button color="secondary" variant="contained" type="submit">
+          <Typography color="primary">Login</Typography>
+        </Button>
       </form>
       </Container>
-    </section>
+    </Box>
   );
 };
 

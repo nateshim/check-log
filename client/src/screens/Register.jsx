@@ -9,6 +9,7 @@ const useStyles = makeStyles((theme) => ({
   registerForm: {
     display: "flex",
     flexDirection: "column",
+    padding: '15px',
   },
 }));
 
