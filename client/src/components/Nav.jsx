@@ -1,16 +1,19 @@
 import {useHistory} from "react-router-dom";
 import { makeStyles } from '@mui/styles';
-import {AppBar, Avatar, Box, Toolbar, Typography} from '@mui/material';
+import {AppBar, Avatar, Box, Divider, Toolbar} from '@mui/material';
 import ButtonLink from './ButtonLink';
 import {logout} from "../services";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   buttonLink: {
     textDecoration: 'inherit',
     textTransform: "none",
     color: 'inherit',
   },
-});
+  divider: {
+    color: theme.palette.divider.main,
+  }
+}));
 
 const Nav = (props) => {
   const classes = useStyles();
@@ -21,8 +24,10 @@ const Nav = (props) => {
     history.push("/");
   }
   return (
+    <>
     <AppBar
       position="static"
+      style={{boxShadow: "none", height: '80px', display:'flex', justifyContent: 'center'}}
     >
       <Toolbar>
         <ButtonLink 
@@ -53,6 +58,8 @@ const Nav = (props) => {
         )}
       </Toolbar>
     </AppBar>
+    <Divider className={classes.divider}/>
+    </>
   );
 };
 

@@ -27,6 +27,9 @@ const theme = createTheme({
     secondary: {
       main: '#331E36',
     },
+    divider: {
+      main: '#C2EFEB',
+    },
   },
 });
 
