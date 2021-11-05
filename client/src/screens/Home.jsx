@@ -41,14 +41,14 @@ const Home = () => {
       >
         <Grid item xs={12} sm={6} display="flex" alignItems="center" justifyContent="center">
           <Container style={{
-            background: 'white', 
-            height: '400px', 
-            width: '500px', 
-            display: 'flex', 
-            flexDirection: 'column', 
+            background: 'white',
+            height: '400px',
+            width: '500px',
+            display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center'
-            }}>
+          }}>
             <Typography
               color='textPrimary'
               style={{
@@ -66,14 +66,14 @@ const Home = () => {
           </Container>
         </Grid>
         <Grid item xs={12} sm={6} display="flex" alignItems="center" justifyContent="center">
-        <Container >
-          <Typography
-            color='primary'
-            style={{
-              fontSize: '40px',
-              fontFamily: 'Archivo',
-            }}
-          >Organize your interactions today! Get started with a customizable tool for your daily conversations.</Typography>
+          <Container >
+            <Typography
+              color='primary'
+              style={{
+                fontSize: '40px',
+                fontFamily: 'Archivo',
+              }}
+            >Organize your interactions today! Get started with a customizable tool for your daily conversations.</Typography>
           </Container>
         </Grid>
       </Grid>
