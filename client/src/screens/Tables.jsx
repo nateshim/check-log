@@ -84,16 +84,16 @@ const Tables = (props) => {
         <Grid container spacing={2} className={classes.tableContainer}>
           {tables.map((table) => (
             <Grid item className={classes.item} xs={12} sm={4} key={table.id}>
-                  <Link to={`${table.id}/log`} style={{ textDecoration: 'none', color: 'inherit' }}>
-              <Button color="secondary" variant="contained" className={classes.table}>
-                    {table.name}
-              </Button>
-                  </Link>
+              <Link to={`${table.id}/log`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                <Button color="secondary" variant="contained" className={classes.table}>
+                  {table.name}
+                </Button>
+              </Link>
             </Grid>
           ))}
           <Grid item className={classes.item} xs={12} sm={4}>
             <Button color="secondary" variant="contained" onClick={handleOpen} className={classes.table}>
-                <Typography>+</Typography>
+              <Typography>+</Typography>
             </Button>
           </Grid>
         </Grid>
