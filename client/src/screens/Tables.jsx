@@ -1,8 +1,8 @@
-import {useState, useEffect} from 'react';
-import {useHistory, useParams} from 'react-router-dom';
-import {Link} from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
-import { Grid, Button, Container, Modal } from '@mui/material'; 
+import { Box, Grid, Button, Container, Modal, Typography } from '@mui/material';
 import FormInput from '../components/FormInput';
 import { getTables, createTable } from '../services';
 
@@ -10,13 +10,30 @@ const useStyles = makeStyles({
   createTableForm: {
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '500px',
   },
+  table: {
+    height: '150px',
+    width: '200px',
+  },
+  tableContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    height: '90vh',
+    padding: '10px',
+  },
+  item: {
+    display: 'flex',
+    justifyContent: 'center',
+  }
 });
 
 const Tables = (props) => {
   const classes = useStyles();
   const history = useHistory();
-  const {username} = useParams(); 
+  const { username } = useParams();
   const [toggleFetch, setToggleFetch] = useState(false);
   const [open, setOpen] = useState(false);
   const [tables, setTables] = useState([]);
@@ -44,9 +61,13 @@ const Tables = (props) => {
   }, [toggleFetch]);
 
   return (
-    <Container>
+    <Container className={classes.tableContainer}>
       <Modal
         open={open}
+        hideBackdrop={true}
+        style={{
+          background: 'white'
+        }}
       >
         <form className={classes.createTableForm}>
           <FormInput
@@ -56,23 +77,27 @@ const Tables = (props) => {
             formValue={name}
             required={true}
           />
-          <Button onClick={handleCreateTable}>Create Table</Button>
+          <Button color="secondary" variant="contained" onClick={handleCreateTable}>Create Table</Button>
         </form>
       </Modal>
-      <Grid container spacing={2}>
-        {tables.map((table) => (
-          <Grid item xs={4} key={table.id}>
-            <Button color="secondary" variant="outlined">
-              <Link to={`${table.id}/log`}>
-                {table.name}
-              </Link>
+      <Container>
+        <Grid container spacing={2} className={classes.tableContainer}>
+          {tables.map((table) => (
+            <Grid item className={classes.item} xs={12} sm={4} key={table.id}>
+                  <Link to={`${table.id}/log`} style={{ textDecoration: 'none', color: 'inherit' }}>
+              <Button color="secondary" variant="contained" className={classes.table}>
+                    {table.name}
+              </Button>
+                  </Link>
+            </Grid>
+          ))}
+          <Grid item className={classes.item} xs={12} sm={4}>
+            <Button color="secondary" variant="contained" onClick={handleOpen} className={classes.table}>
+                <Typography>+</Typography>
             </Button>
           </Grid>
-        ))}
-        <Grid item xs={4}>
-          <Button color="secondary" variant="outlined" onClick={handleOpen}>+</Button>
         </Grid>
-      </Grid>
+      </Container>
     </Container>
   );
 };

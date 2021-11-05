@@ -63,10 +63,12 @@ const Log = (props) => {
 
   const toggleDeleteButtons = () => {
     setShowDeleteButtons(!showDeleteButtons);
+    setShowEditButtons(false);
   }
 
   const toggleEditButtons = () => {
     setShowEditButtons(!showEditButtons);
+    setShowDeleteButtons(false);
   }
 
   const handleAddColumn = async () => {
