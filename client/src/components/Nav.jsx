@@ -19,16 +19,10 @@ const useStyles = makeStyles((theme) => ({
 const Nav = (props) => {
   const classes = useStyles();
   const history = useHistory();
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
   const [openDrawer, setOpenDrawer] = useState(false);
 
-  const handleClick = (e) => {
-    setAnchorEl(e.target);
-  }
-  const handleClose = () => {
-    setAnchorEl(null);
-  }
+  const handleClose = () => setOpenDrawer(false);
+
   const handleLogout = async () => {
     await logout();
     props.setUser(null);
@@ -75,7 +69,7 @@ const Nav = (props) => {
               <Button
                 id="user-menu-button"
                 aria-haspopup="true"
-                aria-expanded={open ? "true" : undefined}
+                aria-expanded={openDrawer ? "true" : undefined}
                 onClick={toggleDrawer(true)}
               >
                 <Avatar src="/broken-image.jpg" />
