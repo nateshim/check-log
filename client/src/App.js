@@ -14,6 +14,8 @@ const theme = createTheme({
     fontFamily: [
       'Roboto',
       'sans-serif',
+      'Archivo',
+      'sans-serif',
     ].join(','),
   },
   palette: {
