@@ -6,6 +6,8 @@ const renderFormHelperText = (id) => {
       return '* Please select 8-12 characters.';
     case 'date':
       return '*e.g. 1970-01-01';
+    case 'location':
+      return '*Please provide a location.';
     default:
       return '';
   }
