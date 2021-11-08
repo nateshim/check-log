@@ -18,7 +18,7 @@ const LogRow = (props) => {
         <Grid item xs={2} style={{maxHeight: '10vh', overflowY: 'scroll', overflowX: 'hidden'}}>
           <Typography color={(props.id === 0 ? "primary" : "secondary")}>{props.location}</Typography>
         </Grid>
-        <Grid item xs={2} style={{maxHeight: '10vh', overflowY: 'scroll'}}>
+        <Grid item xs={2} style={{maxHeight: '10vh', overflowY: 'scroll', overflowX: 'hidden'}}>
           <Typography color={(props.id === 0 ? "primary" : "secondary")}>{props.party}</Typography>
         </Grid>
         <Grid item xs={2} style={{maxHeight: '10vh', overflowY: 'scroll'}}>
