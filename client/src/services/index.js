@@ -57,6 +57,14 @@ export const createTable = async(tableInfo) => {
   }
 }
 
+export const deleteTable = async(id) => {
+  try {
+    await axios.delete(`${apiURL}/tables/${id}`);
+  } catch (e) {
+    console.error(e.message);
+  }
+}
+
 export const getLogs = async(tableID) => {
   try {
     const res = await axios.get(`${apiURL}/logs/${tableID}`);
