@@ -94,32 +94,32 @@ const Tables = (props) => {
           {tables.map((table) => (
             <Grid item className={classes.item} xs={12} sm={4} key={table.id}>
               <Container>
-              {toggleDeleteButtons && <Button 
-                  color="error" 
-                  variant="outlined" 
-                  style={{position: 'absolute', zIndex: '10'}} 
+                {toggleDeleteButtons && <Button
+                  color="error"
+                  variant="outlined"
+                  style={{ position: 'absolute', zIndex: '10' }}
                   onClick={() => handleDeleteTable(table.id)}
                 >X</Button>}
-              <Link to={`${table.id}/log`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                <Button color="secondary" variant="contained" className={classes.table}>
-                  {table.name}
-                </Button>
-              </Link>
+                <Link to={`${table.id}/log`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                  <Button color="secondary" variant="contained" className={classes.table}>
+                    {table.name}
+                  </Button>
+                </Link>
               </Container>
             </Grid>
           ))}
           <Grid item className={classes.item} xs={12} sm={4}>
             <Container>
-            <Button color="secondary" variant="outlined" onClick={handleOpen} className={classes.table}>
-              <Typography>Add Table</Typography>
-            </Button>
+              <Button color="secondary" variant="outlined" onClick={handleOpen} className={classes.table}>
+                <Typography>Add Table</Typography>
+              </Button>
             </Container>
           </Grid>
           <Grid item className={classes.item} xs={12} sm={4}>
             <Container>
-            <Button color="error" variant="outlined" onClick={handleToggleDeleteButtons} className={classes.table}>
-              <Typography>Delete Table</Typography>
-            </Button>
+              <Button color="error" variant="outlined" onClick={handleToggleDeleteButtons} className={classes.table}>
+                <Typography>Delete Table</Typography>
+              </Button>
             </Container>
           </Grid>
         </Grid>
