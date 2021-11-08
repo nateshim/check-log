@@ -1,5 +1,14 @@
 import { FormControl, InputLabel, Input, FormHelperText } from "@mui/material";
 
+const renderFormHelperText = (id) => {
+  switch(id) {
+    case 'password':
+      return '* Please select 8-12 characters.';
+    default:
+      return '';
+  }
+}
+
 const FormInput = (props) => {
   return (
     <FormControl style={{marginBottom: '8px', paddingLeft: '10px'}}>
@@ -13,7 +22,9 @@ const FormInput = (props) => {
         required={props.required}
         style={{color: '#331E36'}}
       />
-      <FormHelperText style={{color: '#331E36'}} id={`${props.for}-helper-text`}>* Please select 8-12 characters.</FormHelperText>
+      <FormHelperText style={{color: '#331E36'}} id={`${props.for}-helper-text`}>
+        {renderFormHelperText(props.for)}
+      </FormHelperText>
     </FormControl>
   );
 };
