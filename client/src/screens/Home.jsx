@@ -27,6 +27,7 @@ const Home = () => {
           style={{
             fontWeight: 'bold',
             fontSize: '50px',
+            padding: '10px',
           }}
         >
           Organize your conversations wherever, whenever.
