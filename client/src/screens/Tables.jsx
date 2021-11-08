@@ -85,6 +85,7 @@ const Tables = (props) => {
           {tables.map((table) => (
             <Grid item className={classes.item} xs={12} sm={4} key={table.id}>
               <Link to={`${table.id}/log`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                <Button color="primary" variant="outlined" style={{position: 'absolute', zIndex: '10'}}>X</Button>
                 <Button color="secondary" variant="contained" className={classes.table}>
                   {table.name}
                 </Button>
