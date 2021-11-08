@@ -36,7 +36,7 @@ const Home = () => {
       <Grid
         container
         className={classes.testimonial}
-        height="800px"
+        height="900px"
         justifyContent="center"
         spacing={2}
       >
