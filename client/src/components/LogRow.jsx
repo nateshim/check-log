@@ -12,7 +12,7 @@ const LogRow = (props) => {
   return (
     <>
       <Grid container item spacing={1} style={(props.id === 0 ? {background: '#331E36'} : {background: 'none'})}>
-        <Grid item xs={2} style={{maxHeight: '15vh', overflowY: 'auto', overflowX: 'none'}}> 
+        <Grid item xs={2} style={{maxHeight: '10vh', overflow: 'hidden'}}> 
           <Typography color={(props.id === 0 ? "primary" : "secondary")}>{props.date}</Typography>
         </Grid>
         <Grid item xs={2} style={{maxHeight: '10vh', overflow: 'auto'}}>
