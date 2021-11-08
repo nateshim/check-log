@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
 import { Box, Grid, Button, Container, Modal, Typography } from '@mui/material';
 import FormInput from '../components/FormInput';
-import { getTables, createTable } from '../services';
+import { getTables, createTable, deleteTable } from '../services';
 
 const useStyles = makeStyles({
   createTableForm: {
@@ -40,6 +40,9 @@ const Tables = (props) => {
   const [name, setName] = useState('');
   const [toggleDeleteButtons, setToggleDeleteButtons] = useState(false);
 
+  const handleToggleDeleteButtons = () => {
+
+  }
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const handleCreateTable = async () => {
@@ -49,6 +52,11 @@ const Tables = (props) => {
     }
     await createTable(tableInfo);
     handleClose();
+    setToggleFetch((curr) => !curr);
+  }
+
+  const handleDeleteTable = async () => {
+    await deleteTable();
     setToggleFetch((curr) => !curr);
   }
 
