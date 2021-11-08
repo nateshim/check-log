@@ -96,6 +96,11 @@ const Tables = (props) => {
               <Typography>Add Table</Typography>
             </Button>
           </Grid>
+          <Grid item className={classes.item} xs={12} sm={4}>
+            <Button color="error" variant="outlined" onClick={handleOpen} className={classes.table}>
+              <Typography>Delete Table</Typography>
+            </Button>
+          </Grid>
         </Grid>
       </Container>
     </Container>
