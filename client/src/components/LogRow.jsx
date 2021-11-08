@@ -12,10 +12,10 @@ const LogRow = (props) => {
   return (
     <>
       <Grid container item spacing={1} style={(props.id === 0 ? {background: '#331E36'} : {background: 'none'})}>
-        <Grid item xs={2} style={{maxHeight: '10vh', overflowY: 'scroll'}}> 
+        <Grid item xs={2} style={{maxHeight: '10vh', overflowY: 'scroll', overflowX: 'hidden'}}> 
           <Typography color={(props.id === 0 ? "primary" : "secondary")}>{props.date}</Typography>
         </Grid>
-        <Grid item xs={2} style={{maxHeight: '10vh', overflowY: 'scroll'}}>
+        <Grid item xs={2} style={{maxHeight: '10vh', overflowY: 'scroll', overflowX: 'hidden'}}>
           <Typography color={(props.id === 0 ? "primary" : "secondary")}>{props.location}</Typography>
         </Grid>
         <Grid item xs={2} style={{maxHeight: '10vh', overflowY: 'scroll'}}>
