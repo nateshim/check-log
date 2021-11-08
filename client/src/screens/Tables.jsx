@@ -93,11 +93,11 @@ const Tables = (props) => {
         <Grid container spacing={2} className={classes.tableContainer}>
           {tables.map((table) => (
             <Grid item className={classes.item} xs={12} sm={4} key={table.id}>
-              <div>
+              <Container>
               {toggleDeleteButtons && <Button 
                   color="error" 
                   variant="outlined" 
-                  style={{position: 'absolute', zIndex: '10', left: 0}} 
+                  style={{position: 'absolute', zIndex: '10'}} 
                   onClick={() => handleDeleteTable(table.id)}
                 >X</Button>}
               <Link to={`${table.id}/log`} style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -105,7 +105,7 @@ const Tables = (props) => {
                   {table.name}
                 </Button>
               </Link>
-              </div>
+              </Container>
             </Grid>
           ))}
           <Grid item className={classes.item} xs={12} sm={4}>
