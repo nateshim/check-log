@@ -8,6 +8,8 @@ const renderFormHelperText = (id) => {
       return '*e.g. 1970-01-01';
     case 'location':
       return '*Please provide a location.';
+    case 'subject':
+      return '*Please provide a subject';
     default:
       return '';
   }
