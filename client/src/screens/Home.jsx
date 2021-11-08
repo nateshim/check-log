@@ -48,7 +48,9 @@ const Home = () => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            margin: '10px',
+            padding: '10px',
           }}>
             <Typography
               color='textPrimary'
