@@ -98,7 +98,7 @@ const Tables = (props) => {
                   color="primary" 
                   variant="outlined" 
                   style={{position: 'absolute', zIndex: '10'}} 
-                  onClick={{}}
+                  onClick={() => handleDeleteTable(table.id)}
                 >X</Button>
                 <Button color="secondary" variant="contained" className={classes.table}>
                   {table.name}
