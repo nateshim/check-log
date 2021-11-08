@@ -41,7 +41,7 @@ const Tables = (props) => {
   const [toggleDeleteButtons, setToggleDeleteButtons] = useState(false);
 
   const handleToggleDeleteButtons = () => {
-
+    setToggleDeleteButtons(!toggleDeleteButtons);
   }
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
