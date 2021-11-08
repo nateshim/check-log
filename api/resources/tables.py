@@ -25,3 +25,9 @@ def add_table():
     table = Table.create(name=body['name'], user=current_user.id)
     table_dict = model_to_dict(table)
     return jsonify(table_dict), 201
+
+@table.route('/<int:id>', methods=["DELETE"])
+@login_required
+def delete_table(id):
+    Table.delete().where(Table.id == id).execute()
+    return jsonify(message="Table successfully deleted!"), 200
