@@ -38,6 +38,7 @@ const Tables = (props) => {
   const [open, setOpen] = useState(false);
   const [tables, setTables] = useState([]);
   const [name, setName] = useState('');
+  const [toggleDeleteButtons, setToggleDeleteButtons] = useState(false);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
