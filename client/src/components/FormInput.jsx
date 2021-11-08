@@ -3,13 +3,13 @@ import { FormControl, InputLabel, Input, FormHelperText } from "@mui/material";
 const renderFormHelperText = (id) => {
   switch(id) {
     case 'password':
-      return '* Please select 8-12 characters.';
+      return '* Required. Please select 8-12 characters.';
     case 'date':
-      return '*e.g. 1970-01-01';
+      return '*Required. e.g. 1970-01-01';
     case 'location':
-      return '*Please provide a location.';
+      return '*Required. Please provide a location.';
     case 'subject':
-      return '*Please provide a subject';
+      return '*Required. Please provide a subject';
     default:
       return '';
   }
