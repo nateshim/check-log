@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
-import { Box, Grid, Button, Container, Modal, Typography } from '@mui/material';
+import { Grid, Button, Container, Modal, Typography } from '@mui/material';
 import FormInput from '../components/FormInput';
 import { getTables, createTable, deleteTable } from '../services';
 
@@ -93,10 +93,11 @@ const Tables = (props) => {
         <Grid container spacing={2} className={classes.tableContainer}>
           {tables.map((table) => (
             <Grid item className={classes.item} xs={12} sm={4} key={table.id}>
+              <div>
               {toggleDeleteButtons && <Button 
-                  color="primary" 
+                  color="error" 
                   variant="outlined" 
-                  style={{position: 'absolute', zIndex: '10'}} 
+                  style={{position: 'absolute', zIndex: '10', left: 0}} 
                   onClick={() => handleDeleteTable(table.id)}
                 >X</Button>}
               <Link to={`${table.id}/log`} style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -104,6 +105,7 @@ const Tables = (props) => {
                   {table.name}
                 </Button>
               </Link>
+              </div>
             </Grid>
           ))}
           <Grid item className={classes.item} xs={12} sm={4}>
