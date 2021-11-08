@@ -15,7 +15,8 @@ const useStyles = makeStyles({
   logRowContainer: {
     flexGrow: 1,
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    padding: '10px',
   }
 });
 
