@@ -55,8 +55,8 @@ const Tables = (props) => {
     setToggleFetch((curr) => !curr);
   }
 
-  const handleDeleteTable = async () => {
-    await deleteTable();
+  const handleDeleteTable = async (id) => {
+    await deleteTable(id);
     setToggleFetch((curr) => !curr);
   }
 
