@@ -1,5 +1,5 @@
 import { makeStyles } from '@mui/styles';
-import { Box, Grid, Divider, Typography } from '@mui/material';
+import { Grid, Divider, Typography } from '@mui/material';
 
 const useStyles = makeStyles((theme) => ({
   divider: {
