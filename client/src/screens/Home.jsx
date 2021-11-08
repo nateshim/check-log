@@ -69,7 +69,7 @@ const Home = () => {
           </Container>
         </Grid>
         <Grid item xs={12} sm={6} display="flex" alignItems="center" justifyContent="center">
-          <Container >
+          <Container>
             <Typography
               color='primary'
               style={{
