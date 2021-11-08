@@ -109,14 +109,18 @@ const Tables = (props) => {
             </Grid>
           ))}
           <Grid item className={classes.item} xs={12} sm={4}>
+            <Container>
             <Button color="secondary" variant="outlined" onClick={handleOpen} className={classes.table}>
               <Typography>Add Table</Typography>
             </Button>
+            </Container>
           </Grid>
           <Grid item className={classes.item} xs={12} sm={4}>
+            <Container>
             <Button color="error" variant="outlined" onClick={handleToggleDeleteButtons} className={classes.table}>
               <Typography>Delete Table</Typography>
             </Button>
+            </Container>
           </Grid>
         </Grid>
       </Container>
